@@ -1,6 +1,8 @@
+import 'server-only';
+
 import type { AxiosInstance } from 'axios';
 import axios from 'axios';
-import 'server-only';
+import type { AllPokemonItem, MyPokemonItem } from './types';
 
 class APIServer {
   readonly baseURL: string;
@@ -15,14 +17,12 @@ class APIServer {
   }
 
   async getMyPokemon() {
-    const response = await this.api.get<
-      { id: string; pokedex_id: string; nickname: string; created_at: string; deleted_at: string | null }[]
-    >(`/pokemon/mine`);
+    const response = await this.api.get<MyPokemonItem[]>(`/pokemon/mine`);
     return response.data;
   }
 
   async getAllPokemon() {
-    const response = await this.api.get<{ pokedex_id: number; name: string; url: string }[]>(`/pokemon/all`);
+    const response = await this.api.get<AllPokemonItem[]>(`/pokemon/all`);
     return response.data;
   }
 }

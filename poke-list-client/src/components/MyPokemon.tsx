@@ -1,5 +1,10 @@
 import api from '@/server';
+import dynamic from 'next/dynamic';
 import MyPokemonCard from './MyPokemonCard';
+
+const DynamicAsyncMyPokemonContent = dynamic(() => import('./AsyncMyPokemonContent'), {
+  loading: () => <div>Loading...</div>,
+});
 
 const MyPokemon = async () => {
   const pokemon = await api.getMyPokemon();
@@ -9,7 +14,7 @@ const MyPokemon = async () => {
       <div className="flex flex-wrap gap-4 bg-gray-500 p-4 rounded-md">
         {pokemon.map((p) => (
           <MyPokemonCard key={p.id} pokemon={p}>
-            More content
+            <DynamicAsyncMyPokemonContent pokemon={p} />
           </MyPokemonCard>
         ))}
       </div>
