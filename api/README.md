@@ -17,7 +17,7 @@ $ psql -h localhost -U postgres -d postgres -p 5789 -f ./init_db.sql -W
 ```
 
 ```sh
-$ go mod download
+$ make
 ```
 
 ### Set .env
