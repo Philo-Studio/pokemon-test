@@ -33,6 +33,12 @@ func main() {
 
 	if *fDBName == "" || *fDBHost == "" || *fDBPort == "" || *fDBUsername == "" || *fDBPassword == "" || *fPort == "" {
 		fmt.Println("error: missing required environment variables or flags")
+		fmt.Println()
+		fmt.Println("DB_HOST", *fDBHost)
+		fmt.Println("DB_PORT", *fDBPort)
+		fmt.Println("DB_USERNAME", *fDBUsername)
+		fmt.Println("DB_PASSWORD", *fDBPassword)
+		fmt.Println("PORT", *fPort)
 		flag.Usage()
 		os.Exit(1)
 	}
